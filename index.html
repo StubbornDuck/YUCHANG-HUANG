@@ -4,79 +4,643 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Yuchang Huang</title>
+  <title>Yuchang Huang | Academic Homepage</title>
+
+  <meta
+    name="description"
+    content="Academic homepage of Yuchang Huang, a master's student at Nara Institute of Science and Technology."
+  >
 
   <style>
+    :root {
+      --primary: #174a7e;
+      --primary-light: #eaf2f8;
+      --text: #263238;
+      --muted: #64748b;
+      --border: #dfe6ec;
+      --background: #ffffff;
+      --section-background: #f8fafc;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      max-width: 760px;
-      margin: 60px auto;
-      padding: 0 24px;
-      font-family: Arial, Helvetica, sans-serif;
+      margin: 0;
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
+      color: var(--text);
+      background: var(--background);
       line-height: 1.7;
-      color: #222;
-    }
-
-    h1 {
-      margin-bottom: 4px;
-    }
-
-    .position {
-      color: #555;
-      font-size: 18px;
-    }
-
-    h2 {
-      margin-top: 36px;
-      border-bottom: 1px solid #ddd;
-      padding-bottom: 6px;
     }
 
     a {
-      color: #0969da;
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.96);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(10px);
+    }
+
+    .nav-container {
+      max-width: 1050px;
+      margin: 0 auto;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-name {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 22px;
+    }
+
+    .nav-links a {
+      color: var(--text);
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    main {
+      max-width: 1050px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .hero {
+      min-height: 540px;
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 56px;
+      align-items: center;
+      padding: 70px 0;
+    }
+
+    .profile-photo {
+      width: 210px;
+      height: 210px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid white;
+      box-shadow: 0 8px 28px rgba(15, 23, 42, 0.18);
+      background: #f1f5f9;
+    }
+
+    .hero h1 {
+      margin: 0 0 8px;
+      font-size: 44px;
+      line-height: 1.2;
+      letter-spacing: -0.8px;
+    }
+
+    .hero-subtitle {
+      margin: 0 0 16px;
+      color: var(--primary);
+      font-size: 21px;
+      font-weight: 600;
+    }
+
+    .hero-affiliation {
+      margin: 0 0 22px;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .hero-description {
+      max-width: 720px;
+      margin-bottom: 24px;
+      font-size: 17px;
+    }
+
+    .social-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 9px 16px;
+      border: 1px solid var(--primary);
+      border-radius: 7px;
+      font-size: 14px;
+      font-weight: 600;
+      transition: 0.2s;
+    }
+
+    .button-primary {
+      color: white;
+      background: var(--primary);
+    }
+
+    .button-secondary {
+      color: var(--primary);
+      background: white;
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+      text-decoration: none;
+      box-shadow: 0 4px 12px rgba(23, 74, 126, 0.15);
+    }
+
+    section {
+      padding: 60px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    section h2 {
+      margin: 0 0 28px;
+      font-size: 29px;
+      letter-spacing: -0.3px;
+    }
+
+    section h2::after {
+      display: block;
+      width: 48px;
+      height: 3px;
+      margin-top: 9px;
+      background: var(--primary);
+      content: "";
+    }
+
+    .interest-grid,
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      padding: 24px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: white;
+      transition: 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 7px 22px rgba(15, 23, 42, 0.08);
+    }
+
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 19px;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .tag {
+      display: inline-block;
+      margin: 10px 5px 0 0;
+      padding: 4px 9px;
+      border-radius: 999px;
+      color: var(--primary);
+      background: var(--primary-light);
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .publication {
+      padding: 22px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .publication:last-child {
+      border-bottom: 0;
+    }
+
+    .publication-title {
+      margin: 0 0 5px;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .publication-authors,
+    .publication-status {
+      margin: 3px 0;
+      color: var(--muted);
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 145px 1fr;
+      gap: 20px;
+      margin-bottom: 28px;
+    }
+
+    .timeline-date {
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .timeline-content h3 {
+      margin: 0 0 4px;
+      font-size: 18px;
+    }
+
+    .timeline-content p {
+      margin: 3px 0;
+      color: var(--muted);
+    }
+
+    .contact-box {
+      padding: 30px;
+      border-radius: 12px;
+      background: var(--section-background);
+      border: 1px solid var(--border);
+    }
+
+    .contact-box p {
+      margin: 8px 0;
+    }
+
+    footer {
+      margin-top: 40px;
+      padding: 30px 24px;
+      color: var(--muted);
+      text-align: center;
+      border-top: 1px solid var(--border);
+      font-size: 14px;
+    }
+
+    @media (max-width: 760px) {
+      .nav-container {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .nav-links {
+        gap: 14px;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        min-height: auto;
+        padding: 55px 0;
+        text-align: center;
+      }
+
+      .profile-photo {
+        width: 180px;
+        height: 180px;
+        margin: 0 auto;
+      }
+
+      .hero h1 {
+        font-size: 36px;
+      }
+
+      .social-links {
+        justify-content: center;
+      }
+
+      .interest-grid,
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline-item {
+        grid-template-columns: 1fr;
+        gap: 4px;
+      }
     }
   </style>
 </head>
 
 <body>
 
-  <h1>Yuchang Huang</h1>
+  <nav>
+    <div class="nav-container">
+      <a class="nav-name" href="#top">Yuchang Huang</a>
 
-  <p class="position">
-    Master's Student<br>
-    Nara Institute of Science and Technology (NAIST)
-  </p>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#research">Research</a>
+        <a href="#publications">Publications</a>
+        <a href="#projects">Projects</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
 
-  <h2>About Me</h2>
+  <main id="top">
 
-  <p>
-    I am a master's student at the Nara Institute of Science and
-    Technology. My research focuses on efficient neural networks
-    and biosignal-based human gesture recognition.
-  </p>
+    <header class="hero">
 
-  <h2>Research Interests</h2>
+      <!-- Automatically uses your current GitHub profile picture -->
+      <img
+        class="profile-photo"
+        src="https://github.com/StubbornDuck.png"
+        alt="Profile photo of Yuchang Huang"
+      >
 
-  <ul>
-    <li>Spiking Neural Networks</li>
-    <li>Transformer Architectures</li>
-    <li>sEMG-Based Gesture Recognition</li>
-    <li>Energy-Efficient Artificial Intelligence</li>
-  </ul>
+      <div>
+        <h1>Yuchang Huang</h1>
 
-  <h2>Affiliation</h2>
+        <p class="hero-subtitle">
+          Master's Student in Information Science and Engineering
+        </p>
 
-  <p>
-    Computing Architecture Laboratory<br>
-    Nara Institute of Science and Technology<br>
-    Nara, Japan
-  </p>
+        <p class="hero-affiliation">
+          Computing Architecture Laboratory<br>
+          Nara Institute of Science and Technology, Japan
+        </p>
 
-  <h2>Contact</h2>
+        <p class="hero-description">
+          My research focuses on spiking neural networks, efficient
+          Transformer architectures, neuromorphic computing, and
+          surface electromyography-based human gesture recognition.
+          I am particularly interested in developing energy-efficient
+          artificial intelligence systems for biosignal understanding.
+        </p>
 
-  <p>
-    Email:
-    <a href="mailto:你的NAIST邮箱">你的NAIST邮箱</a>
-  </p>
+        <div class="social-links">
+
+          <a
+            class="button button-primary"
+            href="mailto:YOUR_NAIST_EMAIL"
+          >
+            Email
+          </a>
+
+          <a
+            class="button button-secondary"
+            href="https://github.com/StubbornDuck"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub
+          </a>
+
+          <a
+            class="button button-secondary"
+            href="#publications"
+          >
+            Publications
+          </a>
+
+        </div>
+      </div>
+    </header>
+
+    <section id="about">
+      <h2>About Me</h2>
+
+      <p>
+        I am a master's student at the
+        <strong>Nara Institute of Science and Technology (NAIST)</strong>
+        and a member of the
+        <strong>Computing Architecture Laboratory</strong>.
+        My current research investigates efficient deep learning
+        architectures for biosignal processing, with an emphasis on
+        spiking neural networks and sEMG-based gesture recognition.
+      </p>
+
+      <p>
+        Before joining NAIST, I received my bachelor's degree from
+        Yunnan University. My broader research goal is to bridge
+        high-performance representation learning and energy-efficient
+        neuromorphic computation.
+      </p>
+    </section>
+
+    <section id="research">
+      <h2>Research Interests</h2>
+
+      <div class="interest-grid">
+
+        <div class="card">
+          <h3>Spiking Neural Networks</h3>
+          <p>
+            Event-driven neural computation, spike encoding,
+            firing-rate control, and efficient temporal modeling.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Efficient Transformers</h3>
+          <p>
+            Lightweight attention mechanisms and efficient
+            architectures for edge and neuromorphic systems.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Biosignal Understanding</h3>
+          <p>
+            Surface electromyography, human gesture recognition,
+            and physiological time-series analysis.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Neuromorphic Computing</h3>
+          <p>
+            Low-power artificial intelligence and hardware-aware
+            neural network design.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="publications">
+      <h2>Publications</h2>
+
+      <div class="publication">
+        <p class="publication-title">
+          STGesture: A Topology-Aware Spiking Transformer for Sparse
+          sEMG-Based Gesture Recognition
+        </p>
+
+        <p class="publication-authors">
+          Yuchang Huang, Yirong Kan, and Yasuhiro Nakashima
+        </p>
+
+        <p class="publication-status">
+          Manuscript in preparation.
+        </p>
+      </div>
+
+      <div class="publication">
+        <p class="publication-title">
+          More publications will be added here.
+        </p>
+
+        <p class="publication-status">
+          This section will be updated as new research results become available.
+        </p>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2>Research Projects</h2>
+
+      <div class="project-grid">
+
+        <div class="card">
+          <h3>STGesture</h3>
+
+          <p>
+            A topology-aware Spiking Transformer framework for
+            efficient sparse sEMG gesture recognition.
+          </p>
+
+          <span class="tag">Spiking Transformer</span>
+          <span class="tag">sEMG</span>
+          <span class="tag">Gesture Recognition</span>
+        </div>
+
+        <div class="card">
+          <h3>Topology-Aware Spike Encoding</h3>
+
+          <p>
+            Spike encoding methods designed to preserve local
+            electrode relationships and stabilize neural activity.
+          </p>
+
+          <span class="tag">Spike Encoding</span>
+          <span class="tag">Electrode Topology</span>
+        </div>
+
+        <div class="card">
+          <h3>Local-Global Spike Attention</h3>
+
+          <p>
+            Lightweight local and global spike interaction mechanisms
+            for reducing the computational cost of attention.
+          </p>
+
+          <span class="tag">Attention</span>
+          <span class="tag">Energy Efficiency</span>
+        </div>
+
+        <div class="card">
+          <h3>Neuromorphic Biosignal Processing</h3>
+
+          <p>
+            Energy-efficient neural architectures for processing
+            temporal physiological signals on edge devices.
+          </p>
+
+          <span class="tag">Neuromorphic AI</span>
+          <span class="tag">Edge Computing</span>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="education">
+      <h2>Education</h2>
+
+      <div class="timeline-item">
+        <div class="timeline-date">2025 – Present</div>
+
+        <div class="timeline-content">
+          <h3>Nara Institute of Science and Technology</h3>
+
+          <p>
+            Master's Student, Information Science and Engineering
+          </p>
+
+          <p>
+            Computing Architecture Laboratory, Nara, Japan
+          </p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">2021 – 2025</div>
+
+        <div class="timeline-content">
+          <h3>Yunnan University</h3>
+
+          <p>Bachelor's Degree</p>
+
+          <p>Kunming, China</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+
+      <div class="contact-box">
+
+        <p>
+          <strong>Email:</strong>
+          <a href="mailto:YOUR_NAIST_EMAIL">
+            YOUR_NAIST_EMAIL
+          </a>
+        </p>
+
+        <p>
+          <strong>GitHub:</strong>
+          <a
+            href="https://github.com/StubbornDuck"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            github.com/StubbornDuck
+          </a>
+        </p>
+
+        <p>
+          <strong>Affiliation:</strong>
+          Computing Architecture Laboratory,
+          Nara Institute of Science and Technology
+        </p>
+
+        <p>
+          <strong>Location:</strong>
+          Nara, Japan
+        </p>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    © 2026 Yuchang Huang. Hosted on GitHub Pages.
+  </footer>
 
 </body>
 </html>
